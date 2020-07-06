@@ -22,10 +22,6 @@ div#home button {
   margin: auto 0px auto 30px;
 }
 
-div#home .explanation {
-  /* border: 1px solid green; */
-}
-
 div#home .explanation-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -41,4 +37,8 @@ div#home .explanation-container {
   div#home button {
     margin: auto;
   }
+}
+
+div#home .explanation:first-of-type {
+  display: block;
 }

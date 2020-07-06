@@ -21,3 +21,35 @@ div.explanation p {
   max-width: 420px;
   font-size: 20px;
 }
+
+@media screen and (max-width: 467px) {
+  div.explanation img.exercise {
+    height: 110px;
+    width: 110px;
+    margin: 0 8px 12px 8px;
+  }
+}
+
+@media screen and (min-width: 437px) {
+  div.explanation img.exercise.last-image {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 379px) {
+  div.explanation div.foods {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: fit-content;
+  }
+
+  div.explanation img {
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 380px) {
+  div.explanation div.foods .food.extra {
+    display: none;
+  }
+}
