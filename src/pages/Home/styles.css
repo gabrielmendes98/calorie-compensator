@@ -32,3 +32,13 @@ div#home .explanation-container {
   row-gap: 60px;
   align-items: flex-end;
 }
+
+@media screen and (max-width: 875px) {
+  div#home .explanation-container {
+    grid-template-columns: 1fr;
+  }
+
+  div#home button {
+    margin: auto;
+  }
+}
