@@ -18,28 +18,30 @@ const Home = () => {
     <div id="home">
       <h1>Welcome to the Calorie Compensator.</h1>
       <h2>How it works?</h2>
-      <Explanation>
-        <div>
-          <img src={fries} alt="fries" />
-          <img src={hamburger} alt="hamburger" />
-          <img src={coke} alt="coke" />
-          <img src={chicken} alt="chicken" />
-        </div>
-        <p>1. Choose the food you want to eat.</p>
-      </Explanation>
-      <Explanation>
-        <img src={weightMachine} alt="weightMachine" />
-        <p>2. Enter your current weight.</p>
-      </Explanation>
-      <Explanation>
-        <div>
-          <img className="exercise" src={exercise1} alt="weightMachine" />
-          <img className="exercise" src={exercise2} alt="weightMachine" />
-          <img className="exercise" src={exercise3} alt="weightMachine" />
-        </div>
-        <p>3. Ready! We will give you a list of exercises that you can practice to burn the calories ingested.</p>
-      </Explanation>
-      <button>Start now!</button>
+      <div className="explanation-container">
+        <Explanation>
+          <div>
+            <img src={fries} alt="fries" />
+            <img src={hamburger} alt="hamburger" />
+            <img src={coke} alt="coke" />
+            <img src={chicken} alt="chicken" />
+          </div>
+          <p>1. Choose the food you want to eat.</p>
+        </Explanation>
+        <Explanation>
+          <img src={weightMachine} alt="weightMachine" />
+          <p>2. Enter your current weight.</p>
+        </Explanation>
+        <Explanation>
+          <div>
+            <img className="exercise" src={exercise1} alt="weightMachine" />
+            <img className="exercise" src={exercise2} alt="weightMachine" />
+            <img className="exercise" src={exercise3} alt="weightMachine" />
+          </div>
+          <p>3. Ready! We will give you a list of exercises that you can practice to burn the calories ingested.</p>
+        </Explanation>
+        <button>Start now!</button>
+      </div>
     </div>
   );
 };
