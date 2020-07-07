@@ -12,7 +12,10 @@ const Search = () => {
         <h2>1. Enter the name of the food you want to eat.</h2>
         <BackButton />
       </div>
-      <Input />
+      <div className="search">
+        <Input />
+        <button>Search</button>
+      </div>
     </div>
   );
 };
