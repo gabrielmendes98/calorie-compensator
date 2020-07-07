@@ -8,9 +8,9 @@ import './styles.css';
 const BackButton = () => {
   const history = useHistory();
 
-  const handleClick = () => {
+  function handleClick() {
     history.goBack();
-  };
+  }
 
   return (
     <span id="back-button" onClick={handleClick}>
