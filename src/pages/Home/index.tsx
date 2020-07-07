@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Explanation from './Explanation';
 
@@ -46,7 +47,8 @@ const Home = () => {
           </div>
           <p>3. Ready! We will give you a list of exercises that you can practice to burn the calories ingested.</p>
         </Explanation>
-        <button>Start now!</button>
+
+        <Link to="/search">Start now!</Link>
       </div>
     </div>
   );

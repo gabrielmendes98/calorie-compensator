@@ -1,0 +1,10 @@
+span#back-button svg {
+  color: var(--primary-color);
+}
+
+span#back-button {
+  color: var(--title-color);
+  font-size: 20px;
+
+  cursor: pointer;
+}
