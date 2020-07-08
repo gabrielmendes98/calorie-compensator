@@ -1,0 +1,8 @@
+ul.food-list {
+  list-style: none;
+}
+
+ul.food-list li {
+  padding: 16px;
+  border-bottom: 1px solid #ccc;
+}

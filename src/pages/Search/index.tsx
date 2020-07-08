@@ -45,7 +45,7 @@ const Search = () => {
   return (
     <div id="search-page">
       <div className="header">
-        <h2>1. Enter the name of the food you want to eat.</h2>
+        <h2>1. Search and select the food you want to eat.</h2>
         <BackButton />
       </div>
       <div className="search">

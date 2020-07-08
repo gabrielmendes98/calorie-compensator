@@ -2,6 +2,8 @@ import React from 'react';
 
 import FoodItem from './FoodItem';
 
+import './styles.css';
+
 interface Food {
   id: string;
   name: string;
@@ -14,11 +16,11 @@ interface Props {
 
 const FoodList: React.FC<Props> = ({ foods }) => {
   return (
-    <div className="food-list">
+    <ul className="food-list">
       {foods.map((food) => (
         <FoodItem key={food.id} id={food.id} name={food.name} brand={food.brand} />
       ))}
-    </div>
+    </ul>
   );
 };
 

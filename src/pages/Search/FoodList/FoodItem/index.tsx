@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './styles.css';
+
 interface Food {
   id: string;
   name: string;
@@ -8,10 +10,10 @@ interface Food {
 
 const FoodItem: React.FC<Food> = ({ id, name, brand }) => {
   return (
-    <div className="food-list-item">
+    <li className="food-list-item">
       <p>{name}</p>
-      <span>{brand}</span>
-    </div>
+      {brand && <span>{brand}</span>}
+    </li>
   );
 };
 

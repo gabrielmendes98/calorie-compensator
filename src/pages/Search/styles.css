@@ -27,3 +27,7 @@ div#search-page div.search button:hover {
   opacity: 0.8;
   cursor: pointer;
 }
+
+div#search-page .food-list {
+  margin-top: 40px;
+}

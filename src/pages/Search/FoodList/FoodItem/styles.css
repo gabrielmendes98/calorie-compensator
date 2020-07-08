@@ -1,0 +1,11 @@
+li.food-list-item span {
+  display: inline-block;
+  margin-top: 4px;
+  color: #999;
+}
+
+li.food-list-item:hover {
+  cursor: pointer;
+  background-color: #ddd;
+  transition: 300ms;
+}
