@@ -49,7 +49,7 @@ interface FoodFoundation extends Food {
 
 interface FoodBranded extends Food {
   householdServingFullText: string;
-  servingSize: string;
+  servingSize: number;
   servingSizeUnit: string;
 }
 
@@ -102,16 +102,47 @@ const Information: React.FC<RouteComponentProps<Props>> = ({ match }) => {
 
       setServings((state) => [...state, ..._servings]);
     } else if (dataType === DataType.Branded) {
+      const auxFood = food as FoodBranded;
+      const serving: Serving = {
+        name: `${auxFood.householdServingFullText} (${auxFood.servingSize} ${auxFood.servingSizeUnit})`,
+        weight: auxFood.servingSize,
+      };
+      setServings((state) => [...state, serving]);
     } else if (dataType === DataType.Foundation) {
+      const auxFood = food as FoodFoundation;
+      const foodPortions = auxFood.foodPortions.map((portion) => ({
+        amount: portion.amount,
+        weight: portion.gramWeight,
+        modifier: portion.modifier,
+        measureName: portion.measureUnit.name,
+      }));
+      const _servings: Serving[] = foodPortions.map((foodPortion) => ({
+        name: `${foodPortion.amount} ${foodPortion.measureName} ${foodPortion.modifier || ''} (${
+          foodPortion.weight
+        } g)`,
+        weight: foodPortion.weight,
+      }));
+
+      setServings((state) => [...state, ..._servings]);
     } else if (dataType === DataType.Survey) {
-    } else {
+      const auxFood = food as FoodSurvey;
+      const foodPortions = auxFood.foodPortions.map((portion) => ({
+        description: portion.portionDescription,
+        weight: portion.gramWeight,
+      }));
+      const _servings: Serving[] = foodPortions.map((foodPortion) => ({
+        name: `${foodPortion.description} (${foodPortion.weight} g)`,
+        weight: foodPortion.weight,
+      }));
+
+      setServings((state) => [...state, ..._servings]);
     }
   }
 
   useEffect(() => {
     api.get<Food>(`food/${id}?api_key=${process.env.REACT_APP_API_KEY}`).then((response) => {
-      extractServings(response.data.dataType, response.data);
       setDescription(response.data.description);
+      extractServings(response.data.dataType, response.data);
     });
   }, [id]);
 
