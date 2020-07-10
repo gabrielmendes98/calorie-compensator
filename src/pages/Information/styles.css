@@ -1,0 +1,14 @@
+div#information {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+div#information div.header {
+  display: flex;
+}
+
+div#information div.header img {
+  height: 60px;
+}
