@@ -139,10 +139,38 @@ const Information: React.FC<RouteComponentProps<Props>> = ({ match }) => {
     }
   }
 
+  function extractNutrients(foodNutrients: Food['foodNutrients']) {
+    const extractedNutrients = foodNutrients.filter((nutrient) => nutrient.nutrient.id in Nutrient);
+    let auxNutrients = {
+      calories: 0,
+      fat: 0,
+      carbs: 0,
+      protein: 0,
+      fiber: 0,
+    };
+
+    extractedNutrients.forEach((element) => {
+      if (element.nutrient.id === Nutrient.Calories) {
+        auxNutrients.calories = element.amount;
+      } else if (element.nutrient.id === Nutrient.Carbs) {
+        auxNutrients.carbs = element.amount;
+      } else if (element.nutrient.id === Nutrient.Fat) {
+        auxNutrients.fat = element.amount;
+      } else if (element.nutrient.id === Nutrient.Fiber) {
+        auxNutrients.fiber = element.amount;
+      } else if (element.nutrient.id === Nutrient.Protein) {
+        auxNutrients.protein = element.amount;
+      }
+    });
+
+    setNutrients(auxNutrients);
+  }
+
   useEffect(() => {
     api.get<Food>(`food/${id}?api_key=${process.env.REACT_APP_API_KEY}`).then((response) => {
       setDescription(response.data.description);
       extractServings(response.data.dataType, response.data);
+      extractNutrients(response.data.foodNutrients);
     });
   }, [id]);
 
