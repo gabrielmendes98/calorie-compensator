@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, Link } from 'react-router-dom';
+
+import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 
 import burn from '../../assets/burn.svg';
 import api from '../../services/api';
@@ -184,22 +186,63 @@ const Information: React.FC<RouteComponentProps<Props>> = ({ match }) => {
         </div>
       </div>
       <div className="content">
-        <p>{nutrients.calories} Calories</p>
-        <input
-          type="number"
-          name="quantity"
-          id="quantity"
-          value={quantity}
-          onChange={(e) => setQuantity(Number(e.target.value))}
-        />
-        <span>X</span>
-        <select name="servings" id="servings">
-          {servings.map((serving) => (
-            <option key={serving.name} value={serving.weight}>
-              {serving.name}
-            </option>
-          ))}
-        </select>
+        <div className="content-header">
+          <p>{nutrients.calories} Calories</p>
+          <div>
+            <input
+              type="number"
+              name="quantity"
+              id="quantity"
+              value={quantity}
+              onChange={(e) => setQuantity(Number(e.target.value))}
+            />
+            <span>x</span>
+            <select name="servings" id="servings">
+              {servings.map((serving) => (
+                <option key={serving.name} value={serving.weight}>
+                  {serving.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <span className="quantity">Quantity</span>
+          <span>Serving</span>
+        </div>
+        <div className="content-nutrients">
+          <div className="nutrient">
+            <p>Fat</p>
+            <span>{nutrients.fat} g</span>
+          </div>
+
+          <div className="nutrient">
+            <p>Carbs</p>
+            <span>{nutrients.carbs} g</span>
+          </div>
+
+          <div className="nutrient">
+            <p>Protein</p>
+            <span>{nutrients.protein} g</span>
+          </div>
+
+          <div className="nutrient">
+            <p>Fiber</p>
+            <span>{nutrients.fiber} g</span>
+          </div>
+        </div>
+      </div>
+      <div className="actions">
+        <Link to="/">
+          <div>
+            <FiArrowLeft />
+          </div>
+          <span>Back</span>
+        </Link>
+        <Link to="/">
+          <span>Next</span>
+          <div>
+            <FiArrowRight />
+          </div>
+        </Link>
       </div>
     </div>
   );
