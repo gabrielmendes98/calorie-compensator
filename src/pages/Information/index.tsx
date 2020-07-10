@@ -87,26 +87,6 @@ const Information: React.FC<RouteComponentProps<Props>> = ({ match }) => {
 
   const { id } = match.params;
 
-  // const extractServings = useCallback(
-  //   (dataType: string, food: Food) => {
-  //     if (dataType === DataType.SRLegacy) {
-  //       const auxFood = food as FoodSRLegacy;
-  //       const foodPortions = auxFood.foodPortions.map((portion) => ({
-  //         amount: portion.amount,
-  //         modifier: portion.modifier,
-  //         weight: portion.gramWeight,
-  //       }));
-  //       const _servings: Serving[] = foodPortions.map((foodPortion) => ({
-  //         name: `${foodPortion.amount} ${foodPortion.modifier} (${foodPortion.weight} g)`,
-  //         weight: foodPortion.weight,
-  //       }));
-  //       setServings([...servings, ..._servings]);
-  //       console.log(servings);
-  //     }
-  //   },
-  //   []
-  // );
-
   function extractServings(dataType: string, food: Food) {
     if (dataType === DataType.SRLegacy) {
       const auxFood = food as FoodSRLegacy;
@@ -121,6 +101,10 @@ const Information: React.FC<RouteComponentProps<Props>> = ({ match }) => {
       }));
 
       setServings((state) => [...state, ..._servings]);
+    } else if (dataType === DataType.Branded) {
+    } else if (dataType === DataType.Foundation) {
+    } else if (dataType === DataType.Survey) {
+    } else {
     }
   }
 
