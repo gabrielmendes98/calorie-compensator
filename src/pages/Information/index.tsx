@@ -75,17 +75,27 @@ interface Serving {
   weight: number;
 }
 
+interface Nutrients {
+  calories: number;
+  fat: number;
+  carbs: number;
+  protein: number;
+  fiber: number;
+}
+
 const Information: React.FC<RouteComponentProps<Props>> = ({ match }) => {
-  const [quantity, setQuantity] = useState(100);
-  const [servings, setServings] = useState<Serving[]>([{ name: 'g', weight: 1 }]);
-  const [description, setDescription] = useState('');
-  const [nutrients, setNutrients] = useState({
+  const [baseNutrients, setBaseNutrients] = useState<Nutrients>({
     calories: 0,
     fat: 0,
     carbs: 0,
     protein: 0,
     fiber: 0,
   });
+  const [quantity, setQuantity] = useState(100);
+  const [servings, setServings] = useState<Serving[]>([{ name: 'g', weight: 1 }]);
+  const [description, setDescription] = useState('');
+  const [nutrients, setNutrients] = useState<Nutrients>(baseNutrients);
+  const [selectedServingWeight, setSelectedServingWeight] = useState(servings[0].weight);
 
   const { id } = match.params;
 
@@ -165,6 +175,7 @@ const Information: React.FC<RouteComponentProps<Props>> = ({ match }) => {
       }
     });
 
+    setBaseNutrients(auxNutrients);
     setNutrients(auxNutrients);
   }
 
@@ -175,6 +186,22 @@ const Information: React.FC<RouteComponentProps<Props>> = ({ match }) => {
       extractNutrients(response.data.foodNutrients);
     });
   }, [id]);
+
+  useEffect(() => {
+    const totalGramWeight = quantity * selectedServingWeight;
+
+    const newNutrients = {} as Nutrients;
+
+    let key: keyof Nutrients;
+
+    for (key in nutrients) {
+      newNutrients[key] = (baseNutrients[key] * totalGramWeight) / 100;
+    }
+
+    setNutrients(newNutrients);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [quantity, selectedServingWeight]);
 
   return (
     <div id="information">
@@ -187,7 +214,7 @@ const Information: React.FC<RouteComponentProps<Props>> = ({ match }) => {
       </div>
       <div className="content">
         <div className="content-header">
-          <p>{nutrients.calories} Calories</p>
+          <p>{Math.round(nutrients.calories)} Calories</p>
           <div>
             <input
               type="number"
@@ -197,7 +224,7 @@ const Information: React.FC<RouteComponentProps<Props>> = ({ match }) => {
               onChange={(e) => setQuantity(Number(e.target.value))}
             />
             <span>x</span>
-            <select name="servings" id="servings">
+            <select name="servings" id="servings" onChange={(e) => setSelectedServingWeight(Number(e.target.value))}>
               {servings.map((serving) => (
                 <option key={serving.name} value={serving.weight}>
                   {serving.name}
@@ -211,27 +238,27 @@ const Information: React.FC<RouteComponentProps<Props>> = ({ match }) => {
         <div className="content-nutrients">
           <div className="nutrient">
             <p>Fat</p>
-            <span>{nutrients.fat} g</span>
+            <span>{nutrients.fat.toFixed(2)} g</span>
           </div>
 
           <div className="nutrient">
             <p>Carbs</p>
-            <span>{nutrients.carbs} g</span>
+            <span>{nutrients.carbs.toFixed(2)} g</span>
           </div>
 
           <div className="nutrient">
             <p>Protein</p>
-            <span>{nutrients.protein} g</span>
+            <span>{nutrients.protein.toFixed(2)} g</span>
           </div>
 
           <div className="nutrient">
             <p>Fiber</p>
-            <span>{nutrients.fiber} g</span>
+            <span>{nutrients.fiber.toFixed(2)} g</span>
           </div>
         </div>
       </div>
       <div className="actions">
-        <Link to="/">
+        <Link to="/search">
           <div>
             <FiArrowLeft />
           </div>
