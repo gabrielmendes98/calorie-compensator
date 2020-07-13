@@ -264,7 +264,7 @@ const Information: React.FC<RouteComponentProps<Props>> = ({ match }) => {
           </div>
           <span>Back</span>
         </Link>
-        <Link to="/">
+        <Link to={`/set-weight?calories=${nutrients.calories}`}>
           <span>Next</span>
           <div>
             <FiArrowRight />
