@@ -1,0 +1,42 @@
+div#compensation {
+  display: flex;
+  flex-direction: column;
+}
+
+div#compensation div.header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+}
+
+div#compensation div.header h2 {
+  max-width: 700px;
+}
+
+div#compensation div.header button {
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 16px;
+  height: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 180px;
+}
+
+div#compensation div.header button span {
+  flex: 1;
+  font-size: 16px;
+}
+
+div#compensation div.header button div {
+  display: flex;
+  background-color: #ad3939;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  font-size: 24px;
+}
