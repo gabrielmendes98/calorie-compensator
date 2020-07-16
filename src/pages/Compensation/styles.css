@@ -6,7 +6,7 @@ div#compensation {
 div#compensation div.header {
   display: flex;
   justify-content: space-between;
-  margin-top: 60px;
+  margin: 60px 0;
 }
 
 div#compensation div.header h2 {
@@ -39,4 +39,31 @@ div#compensation div.header button div {
   justify-content: center;
   width: 45px;
   font-size: 24px;
+}
+
+div#compensation div.container {
+  width: 100%;
+}
+
+div#compensation div.container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+div#compensation div.container table tr {
+  height: 50px;
+}
+
+div#compensation div.container table tr:not(:first-of-type):hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+div#compensation div.container table tr th {
+  text-align: left;
+}
+
+div#compensation div.container table tr td {
+  text-align: left;
+  border-bottom: 1px solid #ccc;
 }
