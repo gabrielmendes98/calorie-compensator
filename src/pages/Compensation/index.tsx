@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
 import { FiDownload } from 'react-icons/fi';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 import BackButton from '../../components/BackButton';
 import activityValues from '../../data/activity-values.json';
@@ -30,6 +32,23 @@ const Compensation: React.FC<RouteComponentProps> = ({ location }) => {
     setActivities(_activities);
   }, [calories, weight]);
 
+  function convertToPdf() {
+    const root = document.querySelector('#compensation') as HTMLElement;
+
+    html2canvas(root, { width: 1260 }).then((canvas) => {
+      document.body.appendChild(canvas);
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'px',
+        format: [920, 2800],
+      });
+      pdf.addImage(imgData, 'PNG', 0, 0);
+      pdf.save('download.pdf');
+      document.body.removeChild(canvas);
+    });
+  }
+
   return (
     <div id="compensation">
       <div className="header">
@@ -37,7 +56,7 @@ const Compensation: React.FC<RouteComponentProps> = ({ location }) => {
           To burn the {`${calories}`} calories ingested when eating grilled chicken breast, you can do any of the
           following activities.
         </h2>
-        <button>
+        <button onClick={convertToPdf}>
           <span>Save as PDF</span>
           <div>
             <FiDownload />

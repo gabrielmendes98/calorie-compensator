@@ -25,6 +25,7 @@ div#compensation div.header button {
   overflow: hidden;
   width: 180px;
   cursor: pointer;
+  outline: 0;
 }
 
 div#compensation div.header button:hover {
