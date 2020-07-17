@@ -220,7 +220,7 @@ const Information: React.FC<RouteComponentProps<Props>> = ({ match }) => {
               type="number"
               name="quantity"
               id="quantity"
-              value={quantity}
+              value={quantity.toString()}
               onChange={(e) => setQuantity(Number(e.target.value))}
             />
             <span>x</span>

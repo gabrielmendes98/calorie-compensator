@@ -20,7 +20,7 @@ const SetWeight: React.FC<RouteComponentProps> = ({ location }) => {
             type="number"
             name="weight"
             id="weight"
-            value={weight}
+            value={weight.toString()}
             onChange={(e) => setWeight(Number(e.target.value))}
           />
           <span>KG</span>
