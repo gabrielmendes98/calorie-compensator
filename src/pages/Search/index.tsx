@@ -24,22 +24,26 @@ const Search = () => {
   const [foodName, setFoodName] = useState('');
   const [foodList, setFoodList] = useState([] as Food[]);
 
+  async function fetchData() {
+    const response = await api.get(`foods/search?api_key=${process.env.REACT_APP_API_KEY}&query=${foodName}`);
+    const foods = response.data.foods;
+    const filteredFoods = foods.map((food: FoodResponse) => ({
+      id: food.fdcId,
+      name: food.description,
+      brand: food.brandOwner,
+    }));
+    setFoodList(filteredFoods);
+  }
+
   useEffect(() => {
     if (foodName !== '') {
-      const timeout = setTimeout(async () => {
-        const response = await api.get(`foods/search?api_key=${process.env.REACT_APP_API_KEY}&query=${foodName}`);
-        const foods = response.data.foods;
-        const filteredFoods = foods.map((food: FoodResponse) => ({
-          id: food.fdcId,
-          name: food.description,
-          brand: food.brandOwner,
-        }));
-        setFoodList(filteredFoods);
-        console.log(response.data.foods);
+      const timeout = setTimeout(() => {
+        fetchData();
       }, 2000);
 
       return () => clearTimeout(timeout);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [foodName]);
 
   return (
@@ -50,7 +54,7 @@ const Search = () => {
       </div>
       <div className="search">
         <Input value={foodName} onChange={(e) => setFoodName(e.target.value)} />
-        <button>Search</button>
+        <button onClick={fetchData}>Search</button>
       </div>
       {foodList.length !== 0 && <FoodList foods={foodList} />}
     </div>
