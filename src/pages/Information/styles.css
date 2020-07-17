@@ -134,7 +134,7 @@ div#information div.actions a:hover {
   opacity: 0.8;
 }
 
-@media screen and (max-width: 321px) {
+@media screen and (max-width: 360px) {
   div#information div.actions a {
     width: 120px;
   }
