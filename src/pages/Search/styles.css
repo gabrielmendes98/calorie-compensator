@@ -31,3 +31,38 @@ div#search-page div.search button:hover {
 div#search-page .food-list {
   margin-top: 40px;
 }
+
+@media screen and (max-width: 650px) {
+  div#search-page div.header {
+    flex-direction: column;
+  }
+
+  #back-button {
+    text-align: right;
+    margin-bottom: 30px;
+  }
+
+  /* Safari 6.1+ */
+  div#search-page div.header h2 {
+    -webkit-order: 2;
+  }
+  div#search-page div.header #back-button {
+    -webkit-order: 1;
+  }
+
+  /* Standard syntax */
+  div#search-page div.header h2 {
+    order: 2;
+  }
+  div#search-page div.header #back-button {
+    order: 1;
+  }
+
+  div#search-page div.search {
+    flex-direction: column;
+  }
+
+  div#search-page div.search button {
+    margin: 30px 0 0 0;
+  }
+}
