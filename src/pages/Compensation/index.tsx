@@ -66,18 +66,22 @@ const Compensation: React.FC<RouteComponentProps> = ({ location }) => {
       </div>
       <div className="container">
         <table>
-          <tr>
-            <th>Activity</th>
-            <th>Description</th>
-            <th>Duration in minutes</th>
-          </tr>
-          {activities.map((activityItem) => (
+          <thead>
             <tr>
-              <td>{activityItem.activity}</td>
-              <td>{activityItem.description}</td>
-              <td>{Math.round(activityItem.duration)}</td>
+              <th>Activity</th>
+              <th>Description</th>
+              <th>Duration in minutes</th>
             </tr>
-          ))}
+          </thead>
+          <tbody>
+            {activities.map((activityItem) => (
+              <tr key={activityItem.description}>
+                <td>{activityItem.activity}</td>
+                <td>{activityItem.description}</td>
+                <td>{Math.round(activityItem.duration)}</td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

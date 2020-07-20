@@ -73,3 +73,46 @@ div#compensation div.container table tr td {
   text-align: left;
   border-bottom: 1px solid #ccc;
 }
+
+@media screen and (max-width: 1240px) {
+  div#compensation div.container table tr td:nth-child(3) {
+    text-align: right;
+  }
+  div#compensation div.container table tr th:nth-child(3) {
+    text-align: right;
+  }
+}
+
+@media screen and (max-width: 1065px) {
+  div#compensation div.header {
+    flex-direction: column;
+  }
+
+  #back-button {
+    text-align: right;
+    margin-bottom: 30px;
+  }
+
+  /* Safari 6.1+ */
+  div#compensation div.header h2 {
+    -webkit-order: 2;
+  }
+  div#compensation div.header #back-button {
+    -webkit-order: 1;
+  }
+  div#compensation div.header button {
+    -webkit-order: 3;
+  }
+
+  /* Standard syntax */
+  div#compensation div.header h2 {
+    order: 2;
+    margin-bottom: 30px;
+  }
+  div#compensation div.header #back-button {
+    order: 1;
+  }
+  div#compensation div.header button {
+    order: 3;
+  }
+}

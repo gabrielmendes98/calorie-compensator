@@ -45,7 +45,7 @@
   { "activity": "sports", "description": "Field hockey", "met": 7.8 },
   { "activity": "sports", "description": "Ice hockey", "met": 8.0 },
   { "activity": "sports", "description": "Jumping rope (fast)", "met": 12.3 },
-  { "activity": "sports", "description": "Jumping rope (fast)", "met": 11.8 },
+  { "activity": "sports", "description": "Jumping rope (moderate)", "met": 11.0 },
   { "activity": "sports", "description": "Jumping rope (slow)", "met": 8.8 },
   { "activity": "sports", "description": "Lacrosse", "met": 8.0 },
   {
