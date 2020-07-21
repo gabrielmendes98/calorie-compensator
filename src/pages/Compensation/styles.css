@@ -60,7 +60,7 @@ div#compensation div.container table tr {
   height: 50px;
 }
 
-div#compensation div.container table tr:not(:first-of-type):hover {
+div#compensation div.container table tbody tr:hover {
   background-color: #ddd;
   cursor: pointer;
 }
