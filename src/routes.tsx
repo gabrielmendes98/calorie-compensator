@@ -6,6 +6,7 @@ import Search from './pages/Search';
 import Information from './pages/Information';
 import SetWeight from './pages/SetWeight';
 import Compensation from './pages/Compensation';
+import About from './pages/About';
 
 const Routes = () => {
   return (
@@ -15,6 +16,7 @@ const Routes = () => {
       <Route component={Information} path="/information/:id" />
       <Route component={SetWeight} path="/set-weight" />
       <Route component={Compensation} path="/compensation-info" />
+      <Route component={About} path="/about" />
     </Switch>
   );
 };

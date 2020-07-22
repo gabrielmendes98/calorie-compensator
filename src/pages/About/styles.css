@@ -1,0 +1,21 @@
+div#about {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+div#about h1 {
+  margin-bottom: 30px;
+}
+
+div#about p {
+  margin-bottom: 30px;
+}
+
+div#about h2 {
+  margin-bottom: 10px;
+}
+
+div#about span#back-button {
+  align-self: flex-end;
+}
