@@ -9,6 +9,15 @@ const About = () => {
     <div id="about">
       <BackButton />
       <h1>About</h1>
+      <h2>API</h2>
+      <p>
+        This app uses the{' '}
+        <a target="_blank" rel="noopener noreferrer" href="https://fdc.nal.usda.gov/index.html">
+          FoodData Central API
+        </a>
+        , that is an integrated data system that provides expanded nutrient profile data and links to related
+        agricultural and experimental research.
+      </p>
       <h2>Calories Burned Formula</h2>
       <p>Total calories burned = Duration (in minutes)*(MET*3.5*weight in kg)/200</p>
       <h2>Accuracy</h2>
@@ -18,17 +27,17 @@ const About = () => {
         max (maximum oxygen uptake) to your maximum heart rate. In addition, there are factors that were disregarded
         here, such as age, body composition, temperature, diet, metabolism, sleep and oxygen intake.
       </p>
-      <h2>MET values</h2>
+      <h2>Metabolic Equivalent of Task (MET) values</h2>
       <span>
-        The MET values were taken from: The Compendium of Physical Trackings Guide. Prevention Research Center,
-        University of South Carolina. And they can be accessed through{' '}
+        The MET values were taken from:{' '}
         <a
           target="_blank"
           rel="noopener noreferrer"
           href="http://prevention.sph.sc.edu/tools/docs/documents_compendium.pdf"
         >
-          this link
+          The Compendium of Physical Trackings Guide Prevention Research Center, University of South Carolina
         </a>
+        .
       </span>
     </div>
   );
