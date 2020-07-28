@@ -7,6 +7,8 @@ import FoodList from './FoodList';
 import api from '../../services/api';
 
 import './styles.css';
+import { Link, RouteComponentProps } from 'react-router-dom';
+import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 
 interface FoodResponse {
   fdcId: string;
@@ -20,24 +22,50 @@ interface Food {
   brand: string;
 }
 
-const Search = () => {
+const Search: React.FC<RouteComponentProps> = ({ history, location }) => {
   const [foodName, setFoodName] = useState('');
   const [foodList, setFoodList] = useState([] as Food[]);
+  const [page, setPage] = useState(1);
 
   async function fetchData() {
-    const response = await api.get(`foods/search?api_key=${process.env.REACT_APP_API_KEY}&query=${foodName}`);
+    const params = new URLSearchParams(location.search);
+    const _page = Number(params.get('page'));
+
+    if (_page) {
+      setPage(_page);
+    }
+
+    const response = await api.get(
+      `foods/search?api_key=${process.env.REACT_APP_API_KEY}&query=${foodName}&pageSize=15&pageNumber=${_page}`
+    );
     const foods = response.data.foods;
     const filteredFoods = foods.map((food: FoodResponse) => ({
       id: food.fdcId,
       name: food.description,
       brand: food.brandOwner,
     }));
+    console.log(page);
     setFoodList(filteredFoods);
   }
 
   useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const _page = Number(params.get('page'));
+
+    if (_page) {
+      setPage(_page);
+    }
+
+    if (foodName !== '') {
+      fetchData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
+
+  useEffect(() => {
     if (foodName !== '') {
       const timeout = setTimeout(() => {
+        history.push({ pathname: '/search', search: '?page=1' });
         fetchData();
       }, 2000);
 
@@ -57,6 +85,24 @@ const Search = () => {
         <button onClick={fetchData}>Search</button>
       </div>
       {foodList.length !== 0 && <FoodList foods={foodList} />}
+      <div className="pagination">
+        <Link to={{ pathname: '/search', search: `?page=${page - 1}` }}>
+          <div>
+            <FiArrowLeft />
+          </div>
+          <span>Back</span>
+        </Link>
+        <div className="number">
+          <p>Page:</p>
+          <span>{page}</span>
+        </div>
+        <Link to={{ pathname: '/search', search: `?page=${page + 1}` }}>
+          <span>Next</span>
+          <div>
+            <FiArrowRight />
+          </div>
+        </Link>
+      </div>
     </div>
   );
 };

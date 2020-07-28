@@ -48,7 +48,7 @@ const Home = () => {
           <p>3. Ready! We will give you a list of exercises that you can practice to burn the calories ingested.</p>
         </Explanation>
 
-        <Link to="/search">Start now!</Link>
+        <Link to={{ pathname: '/search', search: '?page=1' }}>Start now!</Link>
       </div>
     </div>
   );
