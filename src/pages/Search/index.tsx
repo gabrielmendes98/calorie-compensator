@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Link, RouteComponentProps } from 'react-router-dom';
+
+import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 
 import BackButton from '../../components/BackButton';
 import Input from './Input';
@@ -7,8 +10,6 @@ import FoodList from './FoodList';
 import api from '../../services/api';
 
 import './styles.css';
-import { Link, RouteComponentProps } from 'react-router-dom';
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 
 interface FoodResponse {
   fdcId: string;
@@ -86,7 +87,10 @@ const Search: React.FC<RouteComponentProps> = ({ history, location }) => {
       </div>
       {foodList.length !== 0 && <FoodList foods={foodList} />}
       <div className="pagination">
-        <Link to={{ pathname: '/search', search: `?page=${page - 1}` }}>
+        <Link
+          to={{ pathname: '/search', search: `?page=${page - 1}` }}
+          onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
+        >
           <div>
             <FiArrowLeft />
           </div>
@@ -96,7 +100,10 @@ const Search: React.FC<RouteComponentProps> = ({ history, location }) => {
           <p>Page:</p>
           <span>{page}</span>
         </div>
-        <Link to={{ pathname: '/search', search: `?page=${page + 1}` }}>
+        <Link
+          to={{ pathname: '/search', search: `?page=${page + 1}` }}
+          onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
+        >
           <span>Next</span>
           <div>
             <FiArrowRight />
