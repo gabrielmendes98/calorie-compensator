@@ -66,3 +66,55 @@ div#search-page .food-list {
     margin: 30px 0 0 0;
   }
 }
+
+div#search-page div.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+div#search-page div.pagination div.number {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+}
+
+div#search-page div.pagination a {
+  text-decoration: none;
+  overflow: hidden;
+  background-color: var(--primary-color);
+  border-radius: 40px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  width: 150px;
+}
+
+div#search-page div.pagination a span {
+  flex: 1;
+  text-align: center;
+  padding: 8px;
+  font-size: 16px;
+}
+
+div#search-page div.pagination a div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  font-size: 24px;
+  background-color: #ad3939;
+  height: 100%;
+  width: 40px;
+}
+
+div#search-page div.pagination a:hover {
+  opacity: 0.8;
+}
+
+div#search-page div.pagination a.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}

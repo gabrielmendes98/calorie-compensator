@@ -90,6 +90,7 @@ const Search: React.FC<RouteComponentProps> = ({ history, location }) => {
         <Link
           to={{ pathname: '/search', search: `?page=${page - 1}` }}
           onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
+          className={page === 1 ? 'disabled' : ''}
         >
           <div>
             <FiArrowLeft />
@@ -97,7 +98,7 @@ const Search: React.FC<RouteComponentProps> = ({ history, location }) => {
           <span>Back</span>
         </Link>
         <div className="number">
-          <p>Page:</p>
+          <p>Page</p>
           <span>{page}</span>
         </div>
         <Link
