@@ -62,7 +62,6 @@ div#compensation div.container table tr {
 
 div#compensation div.container table tbody tr:hover {
   background-color: #ddd;
-  cursor: pointer;
 }
 
 div#compensation div.container table tr th {
@@ -100,9 +99,6 @@ div#compensation div.container table tr td {
   div#compensation div.header #back-button {
     -webkit-order: 1;
   }
-  div#compensation div.header button {
-    -webkit-order: 3;
-  }
 
   /* Standard syntax */
   div#compensation div.header h2 {
@@ -111,8 +107,5 @@ div#compensation div.container table tr td {
   }
   div#compensation div.header #back-button {
     order: 1;
-  }
-  div#compensation div.header button {
-    order: 3;
   }
 }
