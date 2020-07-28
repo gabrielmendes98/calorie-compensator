@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, Link } from 'react-router-dom';
 
 import BackButton from '../../components/BackButton';
 import activityValues from '../../data/activity-values.json';
+
+import { FiHome } from 'react-icons/fi';
 
 import './styles.css';
 
@@ -35,7 +37,15 @@ const Compensation: React.FC<RouteComponentProps> = ({ location }) => {
           To burn the {`${calories}`} calories ingested when eating grilled chicken breast, you can do any of the
           following activities.
         </h2>
-        <BackButton />
+        <div>
+          <Link to="/">
+            <div>
+              <FiHome />
+            </div>
+            <span>Home</span>
+          </Link>
+          <BackButton />
+        </div>
       </div>
       <div className="container">
         <table>

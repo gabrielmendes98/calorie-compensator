@@ -13,38 +13,41 @@ div#compensation div.header h2 {
   max-width: 700px;
 }
 
-div#compensation div.header button {
+div#compensation div.header div {
+  display: flex;
+}
+
+div#compensation div.header div a {
   display: flex;
   align-items: center;
-  border: none;
   background-color: var(--primary-color);
   color: #fff;
   font-size: 16px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: 40px;
   overflow: hidden;
-  width: 180px;
-  cursor: pointer;
-  outline: 0;
+  width: 130px;
+  text-decoration: none;
+  margin-right: 80px;
 }
 
-div#compensation div.header button:hover {
+div#compensation div.header div a:hover {
   opacity: 0.8;
 }
 
-div#compensation div.header button span {
+div#compensation div.header div a span {
   flex: 1;
   font-size: 16px;
+  padding-left: 10px;
 }
 
-div#compensation div.header button div {
+div#compensation div.header div a div {
   display: flex;
-  background-color: #ad3939;
   height: 100%;
   align-items: center;
   justify-content: center;
   width: 45px;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 div#compensation div.container {
@@ -87,8 +90,8 @@ div#compensation div.container table tr td {
     flex-direction: column;
   }
 
-  #back-button {
-    text-align: right;
+  div#compensation div.header > div {
+    justify-content: flex-end;
     margin-bottom: 30px;
   }
 
@@ -96,7 +99,7 @@ div#compensation div.container table tr td {
   div#compensation div.header h2 {
     -webkit-order: 2;
   }
-  div#compensation div.header #back-button {
+  div#compensation div.header > div {
     -webkit-order: 1;
   }
 
@@ -105,7 +108,13 @@ div#compensation div.container table tr td {
     order: 2;
     margin-bottom: 30px;
   }
-  div#compensation div.header #back-button {
+  div#compensation div.header > div {
     order: 1;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  div#compensation div.header div a {
+    margin-right: 60px;
   }
 }
